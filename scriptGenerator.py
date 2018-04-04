@@ -21,10 +21,10 @@ def incrementList(list):
         print(list)
 
 # prompt user for what type of list, then create lists
-
-print("Create a list of jobs.")
+print("Welcome to the magic sketch machine!")
+print("\nCreate a list of jobs.")
 incrementList(jobsList)
-print("Create a list of adjectives.")
+print("\nCreate a list of adjectives.")
 incrementList(adjList)
 """print("Create a list of places and times.")
 placeList = createList()
@@ -60,10 +60,14 @@ def combine(var1,var2):
 
 def pitchCombiner(list,list2):
     for i in range (0,10):
-        wordOne = randomGrab(list):
-        wordTwo = randomGrab(list2):
+        wordOne = randomGrab(list)
+        wordTwo = randomGrab(list2)
         combine(wordOne, wordTwo)
 
-pitchCombiner(jobsList, adjList)
+pitchCombiner(adjList, jobsList)
+print("\nThese are your funny ideas.")
 print (pitches)
+print("Now you're Monty Python")
+
+
 
