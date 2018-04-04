@@ -1,0 +1,102 @@
+package scriptGenerator;
+import java.util.*;
+
+
+public class scriptGenerator // this program randomly combines words to come up with script ideas
+{
+	private static Scanner in;	// this data is user input
+	
+	public static void main (String [] args) 
+	{ 
+		ArrayList<String> jobsList  = new ArrayList<>(Arrays.asList());
+		ArrayList<String> adjList   = new ArrayList<>(Arrays.asList());
+		ArrayList<String> placeList = new ArrayList<>(Arrays.asList());
+		ArrayList<String> celebList = new ArrayList<>(Arrays.asList());
+		
+		// This prompts the user to create the list and calls createLists
+		System.out.println("Please type in 10 jobs.");
+		jobsList = createLists();
+		System.out.println("Please type in 10 adjectives.");
+		adjList = createLists();
+		/*
+		System.out.println("Please type in 10 places or times.");
+		placeList = createLists();
+		System.out.println("Please type in 10 characters or celebrities.");
+		celebList = createLists();
+		 */
+		
+		// create a pitch list to store combined words
+		ArrayList<String> pitches = new ArrayList<String>();
+		
+		combineLists(jobsList, adjList, pitches);
+		
+		// bug checking that the lists were emptied
+		System.out.println(jobsList);
+		System.out.println(adjList);
+		
+		//print all combined pitches ( would be 20 in final version))
+		for (int i = 0; i < 10; i++)
+		{
+			System.out.println( ( i+ 1 ) + ". " + pitches.get(i) );
+		}
+
+		
+		}
+	
+
+	
+	// this allows a user to enter values into an arrayList and returns that list
+	
+	public static ArrayList<String> createLists()
+	{
+		ArrayList<String> out = new ArrayList<String>();
+		
+		
+		for (int i = 0; i < 10; i++)
+		{
+			
+			System.out.println("What word would you like to add?");
+			System.out.println("This is word #" + (i + 1));
+			in = new Scanner(System.in);
+			while ( in.hasNextLine())
+			{
+				String word = in.next();
+				out.add(word);
+				break;
+			}
+				
+		}
+		return out;
+	}
+	
+	// this combines elements from two lists at random, removes them and then returns the combined list
+	public static ArrayList<String> combineLists(ArrayList<String> x, ArrayList<String> y, ArrayList<String> z)
+	{
+		{
+			String firstPull = randomElement(x);
+			String secondPull = randomElement(y);
+			z.add( secondPull + " " + firstPull );
+			x.remove(firstPull);
+			y.remove(secondPull);
+		}
+		return z;
+	}
+	
+	
+	
+	//gets a random element from a list, 
+	public static String randomElement(ArrayList<String> list) 
+	{
+		int rando = (int) ((Math.random() * list.size()));
+		return list.get(rando);
+		
+	}
+	
+
+	
+	//TODO: random list selector
+	
+	//TODO: formatted printing a table rather than a 'list'
+	
+	//TODO: select random elements from text files
+	
